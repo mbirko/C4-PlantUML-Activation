@@ -1,0 +1,24 @@
+@startuml
+!include ./../C4_Sequence.puml
+
+
+
+Component(componet1, "Componet1", "")
+Component(componet2, "Componet2", "")
+Component(componet3, "Componet3", "")
+activate componet1
+Rel(componet1, componet2, "Activate reciver - long text", $rel="->>", $activation="++")
+deactivate componet1
+Rel(componet2, componet1, "deactivate sender", $rel="->>", $activation=--)
+== break == 
+activate componet1
+Rel(componet1, componet2, "Deactive self, Activate reciver", $rel="->",$activation=--++)
+
+Rel(componet2, componet1, "deactivate sender", $rel="->>", $activation="--")
+Rel(componet2, componet3, "Create rechiver", $rel="->>", $activation="**")
+Rel(componet3, componet2, "Delete sender", $rel="->>", $activation="!!")
+== break == 
+
+
+
+@enduml

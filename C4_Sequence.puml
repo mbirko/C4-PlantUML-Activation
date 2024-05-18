@@ -390,7 +390,7 @@ end box
 
 ' first Rel() supports the $index and $rel argument too; second Rel() overwrites C4.puml definition
 ' don't add empty lines in procedure otherwise & calls are not working anymore '& a -> b: call' are not working anymore
-!unquoted procedure Rel($from, $to, $label, $techn="", $descr="", $sprite="", $tags="", $link="", $index="", $rel="")
+!unquoted procedure Rel($from, $to, $label, $techn="", $descr="", $sprite="", $tags="", $link="", $index="", $rel="", $activation="")
   !if ($show_index == %true())
     !$pre = $getPrefix($index)
   !else
@@ -399,7 +399,7 @@ end box
   !if ($rel == "")
     !$rel = "->"
   !endif
-$getRel($rel, $from, $to, $pre + $label, $techn, $descr, $sprite, $tags, $link)
+$getRel($rel, $from, $to + ' ' + $activation, $pre + $label, $techn, $descr, $sprite, $tags, $link)
 !endprocedure
 !unquoted procedure Rel($from, $to, $label, $techn="", $descr="", $sprite="", $tags="", $link="")
 Rel($from, $to, $label, $techn, $descr, $sprite, $tags, $link, "", "")
